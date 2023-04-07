@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webfejl-2023-35116": {
+      "hosting": {
+        "menetrend": [
+          "webfejl-2023-35116"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webfejl-2023-35116"
+  }
+}

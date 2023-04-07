@@ -1,0 +1,41 @@
+<section class="hero">
+  <h1>Menetrendek</h1>
+</section>
+
+<section class="content">
+  <h2> Menetrendek </h2>
+  
+  <div class="trams">
+    <h3> Villamosok </h3>
+    <button *ngFor="let line of tramLines" (click)="viewSchedule(line)">{{ line }}</button>
+  </div>
+  
+  <div class="buses">
+    <h3> Buszok </h3>
+    <button *ngFor="let line of busLines" (click)="viewSchedule(line)">{{ line }}</button>
+  </div>
+
+  <div class="schedules-container" *ngIf="showSchedules">
+    
+    <h3> Menetrend - {{ selectedLine }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Indulás helye</th>
+          <th>Cél</th>
+          <th>Indulás ideje</th>
+          <th>Érkezés ideje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedules">
+          <td>{{ schedule.from }}</td>
+          <td>{{ schedule.to }}</td>
+          <td>{{ schedule.fromTime }}</td>
+          <td>{{ schedule.toTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="goBack()">Vissza</button>
+  </div>
+</section>

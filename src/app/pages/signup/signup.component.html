@@ -1,0 +1,28 @@
+<section class="hero">
+    <h1>Visszajelzés</h1>
+  </section>
+  <p>
+  </p>
+  <section class="content">
+    <form [formGroup]="signUpForm"  (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email" >Email</label>
+            <input  type="email" id="email" name="email" formControlName="signemail" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Jelszó</label>
+            <input formControlName="signpassword" type="password" id="password" name="password" required>
+        </div>
+        
+            <div class="form-group">
+                <label for="repassword" >Jelszó újra</label>
+                <input  type="password" id="signrePassword" name="signrepassword" formControlName="signrePassword" required>
+            </div>
+        <div class="form-group">
+            <button (click)="signup()" type="submit">Regisztráció</button>
+            <button (click)="goBack()"> Back</button>
+        </div>
+      
+    </form>
+  </section>
+  
