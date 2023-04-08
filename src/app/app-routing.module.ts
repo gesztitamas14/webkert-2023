@@ -24,11 +24,11 @@ const routes: Routes = [
       path: 'signup',
       loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule) 
   },
-  {
+  /*{
     path:'',
     loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule), 
     
-    },
+    },*/
   {
       path: '**',
       loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule) 

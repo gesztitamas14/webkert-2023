@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { User } from '../../shared/models/User';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
     isAdmin: new FormControl(false)
   });
 
-  constructor( private location: Location, private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private userService: UserService, private location: Location, private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -30,6 +31,21 @@ export class SignupComponent implements OnInit {
     
     this.authService.signup(email,password).then(cred=>{
         //console.log(cred);
+        //console.log( this.signUpForm.get('isAdmin')?.value as boolean);
+        
+        const user: User = {
+          id:cred.user?.uid as string,
+          name: this.signUpForm.get('name')?.value as string,
+          email: this.signUpForm.get('email')?.value as string,
+          isAdmin: this.signUpForm.get('isAdmin')?.value as boolean
+        };
+        //TODO insert
+        this.userService.create(user).then(_ =>{
+          //console.log('User added successfully');
+          this.router.navigateByUrl('/contact');
+        }).catch(error=>{
+          console.error(error);
+        })
     }).catch(error=>{
       console.error(error);
     })

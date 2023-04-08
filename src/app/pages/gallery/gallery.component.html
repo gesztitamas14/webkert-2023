@@ -5,33 +5,9 @@
 <section class="content">
   <div class="photo-gallery">
     <div class="gallery-row">
-      <div class="gallery-item">
-        <img src="./assets/90.jpg" alt="90es busz">
-        <h3>90</h3>
-      </div>
-      <div class="gallery-item">
-        <img src="./assets/90f.jpg" alt="90Fes busz">
-        <h3>90F</h3>
-      </div>
-    </div>
-    <div class="gallery-row">
-      <div class="gallery-item">
-        <img src="./assets/74.jpg" alt="74es busz">
-        <h3>74</h3>
-      </div>
-      <div class="gallery-item">
-        <img src="./assets/70.jpg" alt="70es busz">
-        <h3>70</h3>
-      </div>
-    </div>
-    <div class="gallery-row">
-      <div class="gallery-item">
-        <img src="./assets/2es.jpg" alt="2es villamos">
-        <h3>2</h3>
-      </div>
-      <div class="gallery-item">
-        <img src="./assets/1es.jpg" alt="1es villamos">
-        <h3>1</h3>
+      <div class="gallery-item" *ngFor="let image of galleryImages">
+        <img [src]="image.src" [alt]="image.alt">
+        <h3>{{ image.title }}</h3>
       </div>
     </div>
   </div>

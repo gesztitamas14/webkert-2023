@@ -3,13 +3,13 @@
 </section>
 <section class="content">
   <div *ngIf="loggedInUser">
-    <form>
+    <form [formGroup]="feedbackForm">
       <div class="form-group">
-        <label for="contact-message">Message</label>
-        <input type="text" id="contact-message" name="contact-message" required>
+        <label for="feedback-content">Üzenet</label>
+        <input type="text" id="feedback-content" name="feedback-content" required formControlName="content">
       </div>
       <div class="form-group">
-        <button type="button">Send</button>
+        <button (click)="submitFeedback()" type="button">Küldés</button>
         <button (click)="logout()" type="button">Kijelentkezés</button>
       </div>
 
@@ -34,6 +34,3 @@
     </section>
   </div>
 </section>
-
-
-
