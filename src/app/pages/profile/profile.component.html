@@ -1,0 +1,25 @@
+<section class="hero">
+  <h1>Profil</h1>
+</section>
+<section class="content">
+  <div>
+    <h2 *ngIf="userFeedbacks.length>0">Visszajelzéseid</h2>
+    <ul>
+      <li *ngFor="let feedback of userFeedbacks">
+        <ng-container *ngIf="selectedFeedback!==feedback">
+          {{feedback.content}} 
+          <button (click)="deleteComment(feedback)">Delete</button>
+          <button (click)="editComment(feedback)">Edit</button>
+        </ng-container>
+        <ng-container *ngIf="selectedFeedback===feedback">
+          <input [(ngModel)]="feedback.content" />
+          <button (click)="updateComment(feedback)">OK</button>
+          <button (click)="cancelUpdate()">Cancel</button>
+        </ng-container>
+      </li>
+      
+      
+    </ul>
+    <button (click)="logout()" type="button">Kijelentkezés</button>
+  </div>
+</section>

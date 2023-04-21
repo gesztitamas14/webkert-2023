@@ -1,41 +1,46 @@
 <section class="hero">
-  <h1>Menetrendek</h1>
+  <h1>Routes</h1>
 </section>
-
 <section class="content">
-  <h2> Menetrendek </h2>
-  
+  <h2> Routes </h2>
   <div class="trams">
-    <h3> Villamosok </h3>
+    <h3> Trams </h3>
     <button *ngFor="let line of tramLines" (click)="viewSchedule(line)">{{ line }}</button>
   </div>
-  
   <div class="buses">
-    <h3> Buszok </h3>
+    <h3> Buses </h3>
     <button *ngFor="let line of busLines" (click)="viewSchedule(line)">{{ line }}</button>
   </div>
-
   <div class="schedules-container" *ngIf="showSchedules">
-    
-    <h3> Menetrend - {{ selectedLine }}</h3>
+    <h3> Schedule - {{ selectedLine }}</h3>
     <table>
       <thead>
         <tr>
-          <th>Indulás helye</th>
-          <th>Cél</th>
-          <th>Indulás ideje</th>
-          <th>Érkezés ideje</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Departure time</th>
+          <th>Arrival time</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let schedule of schedules">
-          <td>{{ schedule.from }}</td>
-          <td>{{ schedule.to }}</td>
-          <td>{{ schedule.fromTime }}</td>
-          <td>{{ schedule.toTime }}</td>
-        </tr>
+        <ng-container *ngFor="let schedule of schedules">
+          <ng-container *ngFor="let stopRef of schedule.stops; let index = index">
+            <tr *ngIf="stopRef.id === schedule.stops[index].id">
+              <td>{{ stopRef.name }}</td>
+              <td>{{ schedule.stops[index + 1]?.name }}</td>
+              <td>{{ stopRef.arrivalTime }}</td>
+              <td>{{ schedule.stops[index + 1]?.arrivalTime }}</td>
+            </tr>
+            <tr *ngIf="stopRef.id === schedule.stops[schedule.stops.length - 1].id">
+              <td>{{ stopRef.name }}</td>
+              <td></td>
+              <td>{{ stopRef.arrivalTime }}</td>
+              <td>{{ schedule.arrivalTime }}</td>
+            </tr>
+          </ng-container>
+        </ng-container>
       </tbody>
     </table>
-    <button (click)="goBack()">Vissza</button>
+    <button (click)="goBack()">Back</button>
   </div>
 </section>

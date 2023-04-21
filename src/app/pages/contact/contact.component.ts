@@ -61,7 +61,7 @@ export class ContactComponent implements OnInit {
     }
   }
   async submitFeedback() {
-    console.log('katt');
+    //console.log('katt');
     if (this.feedbackForm.valid) {
       const feedback: Feedback = {
         id: '',

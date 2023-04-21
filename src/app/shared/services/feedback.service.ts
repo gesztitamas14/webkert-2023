@@ -21,11 +21,11 @@ export class FeedbackService {
     return this.afs.collection<Feedback>(this.collectionName).valueChanges();
   }
 
-  update(){
-
+  update(feedback: Feedback) {
+    return this.afs.collection<Feedback>(this.collectionName).doc(feedback.id).set(feedback);
   }
 
-  delete(){
-
+  delete(id: string) {
+    return this.afs.collection<Feedback>(this.collectionName).doc(id).delete();
   }
 }

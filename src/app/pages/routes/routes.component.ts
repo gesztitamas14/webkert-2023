@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScheduleService } from '../../shared/services/schedule.service';
 
 @Component({
   selector: 'app-routes',
@@ -12,21 +13,20 @@ export class RoutesComponent {
   busLines: any[] = ['90', '90F', '74', '70'];
   selectedLine: any = null;
 
-  viewSchedule(line: number) {
-    this.showSchedules = true;
+  constructor(private scheduleService: ScheduleService) {}
+
+  viewSchedule(line: string) {
     this.selectedLine = line;
-    // Replace the following with actual data for the selected line
-    this.schedules = [
-      { from: 'A', to: 'B', fromTime: '10:00', toTime: '11:00' },
-      { from: 'B', to: 'C', fromTime: '11:00', toTime: '12:00' },
-      { from: 'C', to: 'D', fromTime: '12:00', toTime: '13:00' },
-      { from: 'D', to: 'E', fromTime: '13:00', toTime: '14:00' }
-    ];
+    this.showSchedules = true;
+    this.scheduleService.getScheduleByLine(line).subscribe((schedules: any[]) => {
+      this.schedules = schedules;
+      this.showSchedules = true;
+      console.log(line)
+    });
   }
 
   goBack() {
     this.showSchedules = false;
     this.selectedLine = null;
-    this.schedules = [];
   }
 }
