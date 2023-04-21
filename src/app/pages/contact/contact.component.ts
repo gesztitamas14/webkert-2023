@@ -56,7 +56,7 @@ export class ContactComponent implements OnInit {
           this.router.navigateByUrl('/contact'); // navigate to the main page
         })
         .catch(error => { // if there was an error with the login
-          console.error(error); // log the error
+          alert("Hibás bejelentkezési adatok"); // log the error
         });
     }
   }
@@ -77,6 +77,6 @@ export class ContactComponent implements OnInit {
       });
     }
   }
-  
+
 
 }

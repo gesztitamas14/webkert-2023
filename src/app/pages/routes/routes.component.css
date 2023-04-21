@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.back-button {
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
 .hero h1 {
   font-size: 3rem;
   color: #16a085;

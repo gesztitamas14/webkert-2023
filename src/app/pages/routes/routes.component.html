@@ -1,46 +1,31 @@
 <section class="hero">
-  <h1>Routes</h1>
+  <h1>Menetrendek</h1>
 </section>
 <section class="content">
-  <h2> Routes </h2>
   <div class="trams">
-    <h3> Trams </h3>
+    <h3> Villamos </h3>
     <button *ngFor="let line of tramLines" (click)="viewSchedule(line)">{{ line }}</button>
   </div>
   <div class="buses">
-    <h3> Buses </h3>
+    <h3> Busz </h3>
     <button *ngFor="let line of busLines" (click)="viewSchedule(line)">{{ line }}</button>
   </div>
   <div class="schedules-container" *ngIf="showSchedules">
-    <h3> Schedule - {{ selectedLine }}</h3>
+    <h3>{{ selectedLine }}-es járat</h3>
     <table>
       <thead>
-        <tr>
-          <th>From</th>
-          <th>To</th>
-          <th>Departure time</th>
-          <th>Arrival time</th>
-        </tr>
+      <tr>
+        <th>Megálló</th>
+        <th>Perc</th>
+      </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let schedule of schedules">
-          <ng-container *ngFor="let stopRef of schedule.stops; let index = index">
-            <tr *ngIf="stopRef.id === schedule.stops[index].id">
-              <td>{{ stopRef.name }}</td>
-              <td>{{ schedule.stops[index + 1]?.name }}</td>
-              <td>{{ stopRef.arrivalTime }}</td>
-              <td>{{ schedule.stops[index + 1]?.arrivalTime }}</td>
-            </tr>
-            <tr *ngIf="stopRef.id === schedule.stops[schedule.stops.length - 1].id">
-              <td>{{ stopRef.name }}</td>
-              <td></td>
-              <td>{{ stopRef.arrivalTime }}</td>
-              <td>{{ schedule.arrivalTime }}</td>
-            </tr>
-          </ng-container>
-        </ng-container>
+      <tr *ngFor="let stop of schedules">
+        <td>{{ stop.name }}</td>
+        <td>{{ stop.time }}</td>
+      </tr>
       </tbody>
     </table>
-    <button (click)="goBack()">Back</button>
+    <button class="back-button" (click)="goBack()">Back</button>
   </div>
 </section>
