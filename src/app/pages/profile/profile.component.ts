@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   loggedInUser?: firebase.default.User | null;
   userFeedbacks: Feedback[] = [];
   selectedFeedback: Feedback | null = null;
+  updatedContent: string = '';
 
 
 
@@ -23,6 +24,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.authService.isUserLoggedIn().subscribe(
       (user) => {
         this.loggedInUser = user;
@@ -49,48 +51,49 @@ export class ProfileComponent implements OnInit {
         this.router.navigateByUrl('/main');
       })
       .catch((error) => {
-        console.error(error);
+        //console.error(error);
       });
   }
 
   deleteComment(feedback: Feedback) {
     this.feedbackService.delete(feedback.id)
       .then(() => {
-        console.log('Comment deleted successfully');
+        //console.log('Comment deleted successfully');
       })
       .catch(error => {
-        console.error(error);
+        //console.error(error);
       });
   }
 
-  updateComment(feedback: Feedback) {
+  updateComment(feedback: Feedback, updatedContent: string) {
 
     if (this.selectedFeedback) {
-      const updatedComment: Feedback = { ...this.selectedFeedback, content: feedback.content };
+      const updatedComment: Feedback = { ...this.selectedFeedback, content: updatedContent };
       this.feedbackService.update(updatedComment)
         .then(() => {
-          console.log('Comment updated successfully');
+          //console.log('Comment updated successfully');
           this.selectedFeedback = null;
         })
         .catch(error => {
-          console.error(error);
+          //console.error(error);
         });
     }
   }
-  
+
 
   editComment(comment: Feedback) {
     this.selectedFeedback = comment;
     //console.log(comment);
     //console.log(this.selectedComment)
-    
+
   }
-  
-  
+
+
 
   cancelUpdate(){
     this.selectedFeedback = null;
+    this.updatedContent = '';
     this.router.navigateByUrl('/profile');
   }
-  
+
 }

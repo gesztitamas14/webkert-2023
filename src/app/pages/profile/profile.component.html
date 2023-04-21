@@ -8,13 +8,13 @@
       <li *ngFor="let feedback of userFeedbacks">
         <ng-container *ngIf="selectedFeedback!==feedback">
           {{feedback.content}}
-          <button (click)="deleteComment(feedback)">Delete</button>
-          <button (click)="editComment(feedback)">Edit</button>
+          <button (click)="deleteComment(feedback)">Törlés</button>
+          <button (click)="editComment(feedback)">Módosítás</button>
         </ng-container>
         <ng-container *ngIf="selectedFeedback===feedback">
-          <input [(ngModel)]="feedback.content" />
-          <button (click)="updateComment(feedback)">OK</button>
-          <button (click)="cancelUpdate()">Cancel</button>
+          <input [(ngModel)]="updatedContent" />
+          <button (click)="updateComment(feedback, updatedContent)">OK</button>
+          <button (click)="cancelUpdate()">Vissza</button>
         </ng-container>
       </li>
 
