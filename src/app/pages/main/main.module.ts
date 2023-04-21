@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 
 
 @NgModule({
@@ -11,7 +14,8 @@ import { MainComponent } from './main.component';
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    MatGridListModule
   ]
 })
 export class MainModule { }

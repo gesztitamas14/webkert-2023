@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import { DateFormatPipe } from './shared/pipes/date-format.pipe';
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    MatGridListModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DateFormatPipe],
   bootstrap: [AppComponent]
 })
 

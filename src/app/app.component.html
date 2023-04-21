@@ -1,23 +1,41 @@
-<header>
-  <div class="logo">
-    <img src="assets/logo.png" alt="Logo" >
-  </div>
-  <nav>
-    <ul>
-      <li><a routerLink="/main">Főoldal</a></li>
-      <li><a routerLink="/routes">Menetrendek</a></li>
-      <li><a routerLink="/gallery">Galéria</a></li>
-      <li><a routerLink="/contact">Visszajelzés</a></li>
-      <li *ngIf="loggedInUser"><a routerLink="/profile">Profil</a></li>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" [opened]="opened" (openedChange)="opened = $event" class="mobile-sidenav">
+    <nav>
+      <ul>
+        <li><a routerLink="/main" (click)="sidenav.close()">Főoldal</a></li>
+        <li><a routerLink="/routes" (click)="sidenav.close()">Menetrendek</a></li>
+        <li><a routerLink="/gallery" (click)="sidenav.close()">Galéria</a></li>
+        <li><a routerLink="/contact" (click)="sidenav.close()">Visszajelzés</a></li>
+        <li *ngIf="loggedInUser"><a routerLink="/profile" (click)="sidenav.close()">Profil</a></li>
+      </ul>
+    </nav>
+  </mat-sidenav>
 
-    </ul>
-  </nav>
-</header>
+  <mat-sidenav-content>
+    <header>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo" >
+      </div>
+      <nav>
+        <button mat-icon-button (click)="sidenav.toggle()" class="sidenav-toggler">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <ul class="nav-desktop">
+          <li><a routerLink="/main">Főoldal</a></li>
+          <li><a routerLink="/routes">Menetrendek</a></li>
+          <li><a routerLink="/gallery">Galéria</a></li>
+          <li><a routerLink="/contact">Visszajelzés</a></li>
+          <li *ngIf="loggedInUser"><a routerLink="/profile">Profil</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<div>
-  <router-outlet></router-outlet>
-</div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
 
-<footer>
-  <p>&copy; 2023 IMOT közlekedési társaság. Minden jog fenntartva.</p>
-</footer>
+    <footer>
+      <p>&copy; 2023 IMOT közlekedési társaság. Minden jog fenntartva.</p>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

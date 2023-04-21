@@ -2,13 +2,13 @@
   box-sizing: border-box;
 }
 
-.hero {
+.topside {
   background-color: #dff9fb;
   padding: 2rem;
   text-align: center;
 }
 
-.hero h1 {
+.topside h1 {
   font-size: 3rem;
   color: #16a085;
 }

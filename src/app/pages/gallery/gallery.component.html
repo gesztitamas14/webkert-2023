@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="topside">
   <h1>Galéria</h1>
 </section>
 
@@ -6,8 +6,10 @@
   <div class="photo-gallery">
     <div class="gallery-row">
       <div class="gallery-item" *ngFor="let image of galleryImages">
-        <img [src]="image.src" [alt]="image.alt">
-        <h3>{{ image.title }}</h3>
+        <ng-container *ngIf="image.src">
+          <img [src]="image.src" [alt]="image.alt">
+          <h3>{{ image.title }}</h3>
+        </ng-container>
       </div>
     </div>
   </div>

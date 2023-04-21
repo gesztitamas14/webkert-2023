@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 
 export class AppComponent implements OnInit{
   loggedInUser?: firebase.default.User | null;
+  opened = false;
 
   constructor(private router: Router, private authService: AuthService) {
     // parameter adattagok
@@ -25,6 +26,8 @@ export class AppComponent implements OnInit{
       localStorage.setItem('user', JSON.stringify('null'));
     });
   }
+
   title = 'menetrend';
+
 
 }

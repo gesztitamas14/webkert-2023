@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="topside">
   <h1>Profil</h1>
 </section>
 <section class="content">
@@ -7,7 +7,7 @@
     <ul>
       <li *ngFor="let feedback of userFeedbacks">
         <ng-container *ngIf="selectedFeedback!==feedback">
-          {{feedback.content}} 
+          {{feedback.content}}
           <button (click)="deleteComment(feedback)">Delete</button>
           <button (click)="editComment(feedback)">Edit</button>
         </ng-container>
@@ -17,8 +17,8 @@
           <button (click)="cancelUpdate()">Cancel</button>
         </ng-container>
       </li>
-      
-      
+
+
     </ul>
     <button (click)="logout()" type="button">Kijelentkezés</button>
   </div>

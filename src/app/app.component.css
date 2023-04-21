@@ -12,6 +12,7 @@ header {
   background-color: #3399cc;
   padding: 10px;
   height: 70px;
+
 }
 
 .logo img {
@@ -23,6 +24,7 @@ nav {
   display: flex;
   align-items: center;
   margin-right: 20px;
+
 }
 
 nav ul {
@@ -69,4 +71,55 @@ footer {
   justify-content: center;
   align-items: center;
 
+}
+
+.sidenav-toggler {
+  display: none;
+  color: #fff;
+}
+
+/* ... your existing CSS ... */
+
+.sidenav-toggler {
+  display: none;
+  color: #fff;
+}
+
+.nav-desktop {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  nav .nav-desktop {
+    display: none;
+  }
+
+  .sidenav-toggler {
+    display: block;
+    margin-right: 20px;
+  }
+
+  mat-sidenav.mobile-sidenav {
+    width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  mat-sidenav.mobile-sidenav {
+    background-color: #3399cc;
+  }
+
+  mat-sidenav.mobile-sidenav nav ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  mat-sidenav.mobile-sidenav nav li {
+    margin: 10px 0;
+    border-top: none;
+    border-bottom: none;
+    text-align: center;
+  }
 }

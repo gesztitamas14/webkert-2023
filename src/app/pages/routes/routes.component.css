@@ -2,10 +2,11 @@
   box-sizing: border-box;
 }
 
-.hero {
+.topside {
   background-color: #dff9fb;
   padding: 2rem;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .back-button {
@@ -13,7 +14,7 @@
   margin-bottom: 70px;
 }
 
-.hero h1 {
+.topside h1 {
   font-size: 3rem;
   color: #16a085;
 }

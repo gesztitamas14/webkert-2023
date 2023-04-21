@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="topside">
   <h1>Menetrendek</h1>
 </section>
 <section class="content">
@@ -26,6 +26,13 @@
       </tr>
       </tbody>
     </table>
-    <button class="back-button" (click)="goBack()">Back</button>
   </div>
+  <div *ngIf="showSchedules">
+      <p>
+        Magyarázat: Az adott megállókban minden órában a megadott (Perc) időpontban áll meg a megállónál.
+      </p>
+    <p>{{ getDelayMessage() }}</p>
+    <span><button  class="back-button" (click)="goBack()">Back</button></span>
+  </div>
+
 </section>

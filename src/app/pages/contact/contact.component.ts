@@ -12,7 +12,7 @@ import { Feedback } from 'src/app/shared/models/Feedback';
 })
 export class ContactComponent implements OnInit {
   feedbackForm: any;
-  loginForm : any; // declare a variable to hold the form instance
+  loginForm : any;
   loggedInUser?: firebase.default.User |null;
 
 
@@ -28,10 +28,9 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // create the form group and its form controls
     this.loginForm = new FormGroup({
-      email: new FormControl(''), // add email form control with validation
-      password: new FormControl('') // add password form control with validation
+      email: new FormControl(''),
+      password: new FormControl('')
     });
 
     // check if the user is logged in
@@ -43,20 +42,19 @@ export class ContactComponent implements OnInit {
 
 
     this.feedbackForm = new FormGroup({
-      content: new FormControl('', Validators.required), // add content form control with validation
+      content: new FormControl('', Validators.required),
     });
   }
 
   async login() {
-    if (this.loginForm.valid) { // check if the form is valid
-      const { email, password } = this.loginForm.value; // get the email and password values from the form
-      this.authService.login(email, password) // call the login method on the auth service with email and password
-        .then(cred => { // if the login was successful
-          //console.log(cred); log the credential
-          this.router.navigateByUrl('/contact'); // navigate to the main page
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password)
+        .then(cred => {
+          this.router.navigateByUrl('/contact');
         })
-        .catch(error => { // if there was an error with the login
-          alert("Hibás bejelentkezési adatok"); // log the error
+        .catch(error => {
+          alert("Hibás bejelentkezési adatok");
         });
     }
   }
@@ -70,7 +68,7 @@ export class ContactComponent implements OnInit {
         date_submitted: new Date(),
       };
       this.feedbackService.create(feedback).then(() => {
-        this.router.navigateByUrl('/main');
+        this.router.navigateByUrl('/profile');
       })
       .catch((error) => {
         console.error(error);

@@ -15,9 +15,11 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     this.galleryService.loadImageMeta().subscribe(images => {
       this.galleryImages = images;
+      //console.log(this.galleryImages);
       this.galleryImages.forEach(image => {
         this.galleryService.loadImage(image.src).subscribe(url => {
           image.src = url;
+          //console.log(image.src);
         });
       });
     });

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ScheduleService} from '../../shared/services/schedule.service';
+import { DateFormatPipe } from '../../shared/pipes/date-format.pipe';
 
 @Component({
   selector: 'app-routes',
@@ -13,7 +14,7 @@ export class RoutesComponent {
   busLines: any[] = ['90', '90F', '74', '70'];
   selectedLine: any = null;
 
-  constructor(private scheduleService: ScheduleService) {
+  constructor(private scheduleService: ScheduleService, private dateFormatPipe: DateFormatPipe) {
   }
 
   viewSchedule(line: string) {
@@ -34,6 +35,16 @@ export class RoutesComponent {
     });
   }
 
+  getDelayMessage(): string {
+    const today = new Date();
+    const twoDaysLater = new Date();
+    twoDaysLater.setDate(today.getDate() + 2);
+
+    const todayFormatted = this.dateFormatPipe.transform(today);
+    const twoDaysLaterFormatted = this.dateFormatPipe.transform(twoDaysLater);
+
+    return `A mai naptól (${todayFormatted}) a következő két napig (${twoDaysLaterFormatted}-ig) a buszok és villamosok késésére számíthatnak.`;
+  }
 
 
 
